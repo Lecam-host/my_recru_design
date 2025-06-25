@@ -6,7 +6,9 @@ import 'package:my_recru_design/presentation/auth/login/login_page.dart';
 import 'package:my_recru_design/presentation/auth/sign_up/personel_info_page.dart';
 import 'package:my_recru_design/presentation/auth/sign_up/sign_up_page.dart';
 import 'package:my_recru_design/presentation/contact/contact_home.dart';
+import 'package:my_recru_design/presentation/contact/create_contact_page.dart';
 import 'package:my_recru_design/presentation/favorite/favorite_home.dart';
+import 'package:my_recru_design/presentation/home/home_page.dart';
 import 'package:my_recru_design/presentation/onboarding/onboarding_page.dart';
 import 'package:my_recru_design/presentation/recent/recent_home.dart';
 import 'package:my_recru_design/presentation/splash_page.dart';
@@ -15,7 +17,7 @@ import 'package:my_recru_design/presentation/widgets/bottom_navigation_bar.dart'
 class AppRouter extends GoRouter {
   AppRouter()
     : super.routingConfig(
-        initialLocation: PageName.signUpPersonelInfoPage,
+        initialLocation: PageName.contactHome,
         observers: <NavigatorObserver>[],
         routingConfig: ValueNotifier<RoutingConfig>(
           RoutingConfig(
@@ -57,13 +59,26 @@ class AppRouter extends GoRouter {
                     ],
                   ),
                   StatefulShellBranch(
-                    //  navigatorKey: PageKey.marketNavigatorKey,
+                    navigatorKey: GlobalKey<NavigatorState>(
+                      debugLabel: 'contact',
+                    ),
                     routes: [
                       GoRoute(
                         path: PageName.contactHome,
+                        name: PageName.contactHome,
                         pageBuilder: (context, GoRouterState state) {
                           return getPage(
                             child: const ContactHome(),
+                            state: state,
+                          );
+                        },
+                      ),
+                      GoRoute(
+                        path: PageName.createContactPage,
+                        name: PageName.createContactPage,
+                        pageBuilder: (context, GoRouterState state) {
+                          return getPage(
+                            child: const CreateContactPage(),
                             state: state,
                           );
                         },
@@ -72,6 +87,7 @@ class AppRouter extends GoRouter {
                   ),
                 ],
               ),
+
               GoRoute(
                 path: PageName.splash,
                 name: PageName.splash,
@@ -119,6 +135,14 @@ class AppRouter extends GoRouter {
                     child: const ForgotPasswordPage(),
                     state: state,
                   );
+                },
+              ),
+
+              GoRoute(
+                path: PageName.home,
+                name: PageName.home,
+                pageBuilder: (context, GoRouterState state) {
+                  return getPage(child: const HomePage(), state: state);
                 },
               ),
             ],
