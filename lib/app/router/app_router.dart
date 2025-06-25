@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:my_recru_design/app/router/page_name.dart';
+import 'package:my_recru_design/presentation/auth/forgot_password_page.dart/forgot_password_page.dart';
+import 'package:my_recru_design/presentation/auth/login/login_page.dart';
+import 'package:my_recru_design/presentation/auth/sign_up/personel_info_page.dart';
+import 'package:my_recru_design/presentation/auth/sign_up/sign_up_page.dart';
 import 'package:my_recru_design/presentation/contact/contact_home.dart';
 import 'package:my_recru_design/presentation/favorite/favorite_home.dart';
+import 'package:my_recru_design/presentation/onboarding/onboarding_page.dart';
 import 'package:my_recru_design/presentation/recent/recent_home.dart';
 import 'package:my_recru_design/presentation/splash_page.dart';
 import 'package:my_recru_design/presentation/widgets/bottom_navigation_bar.dart';
@@ -10,7 +15,7 @@ import 'package:my_recru_design/presentation/widgets/bottom_navigation_bar.dart'
 class AppRouter extends GoRouter {
   AppRouter()
     : super.routingConfig(
-        initialLocation: PageName.splash,
+        initialLocation: PageName.signUpPersonelInfoPage,
         observers: <NavigatorObserver>[],
         routingConfig: ValueNotifier<RoutingConfig>(
           RoutingConfig(
@@ -72,6 +77,48 @@ class AppRouter extends GoRouter {
                 name: PageName.splash,
                 pageBuilder: (context, GoRouterState state) {
                   return getPage(child: const SplashPage(), state: state);
+                },
+              ),
+              GoRoute(
+                path: PageName.onboardingPage,
+                name: PageName.onboardingPage,
+                pageBuilder: (context, GoRouterState state) {
+                  return getPage(child: const OnboardingPage(), state: state);
+                },
+              ),
+              GoRoute(
+                path: PageName.signUpPersonelInfoPage,
+                name: PageName.signUpPersonelInfoPage,
+                pageBuilder: (context, GoRouterState state) {
+                  return getPage(
+                    child: const SignUpPersonelInfoPage(),
+                    state: state,
+                  );
+                },
+              ),
+
+              GoRoute(
+                path: PageName.signUpPage,
+                name: PageName.signUpPage,
+                pageBuilder: (context, GoRouterState state) {
+                  return getPage(child: const SignUpPage(), state: state);
+                },
+              ),
+              GoRoute(
+                path: PageName.loginPage,
+                name: PageName.loginPage,
+                pageBuilder: (context, GoRouterState state) {
+                  return getPage(child: const LoginPage(), state: state);
+                },
+              ),
+              GoRoute(
+                path: PageName.forgotPasswordPage,
+                name: PageName.forgotPasswordPage,
+                pageBuilder: (context, GoRouterState state) {
+                  return getPage(
+                    child: const ForgotPasswordPage(),
+                    state: state,
+                  );
                 },
               ),
             ],

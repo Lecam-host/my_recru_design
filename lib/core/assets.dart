@@ -9,4 +9,13 @@ class SvgIconConstants {
 
   static const String onboarding2 = '$path/onboarding2.svg';
   static const String onboarding3 = '$path/onboarding3.svg';
+
+  static const String facebook = '$path/facebook.svg';
+  static const String google = '$path/google.svg';
+  static const String ciFlag = '$path/ci_flag.svg';
+}
+
+class AppImagesConstants {
+  static const String path = 'assets/images';
+  static const String logo = '$path/app_logo.png';
 }

@@ -17,10 +17,16 @@ class AppTheme {
     colorScheme: const ColorScheme.light(
       primary: primaryColor,
       primaryContainer: primaryColorLight,
+
       // secondary: Color(0xFF59C1BD),
     ),
     textTheme: const TextTheme(
       titleLarge: TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.w700,
+        color: textColor,
+      ),
+      titleMedium: TextStyle(
         fontSize: 20,
         fontWeight: FontWeight.w700,
         color: textColor,
@@ -33,9 +39,15 @@ class AppTheme {
       labelMedium: TextStyle(
         fontSize: 12,
         fontWeight: FontWeight.w400,
-        color: Colors.grey,
+        color: textColor,
+      ),
+      titleSmall: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w500,
+        color: textColor,
       ),
     ),
+
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.white,
       elevation: 0,
