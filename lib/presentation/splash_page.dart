@@ -22,7 +22,7 @@ class _SplashPageState extends State<SplashPage> {
 
   nextPage() {
     Timer(const Duration(seconds: 3), () {
-      context.go(PageName.home);
+      context.go(PageName.loginPage);
     });
   }
 

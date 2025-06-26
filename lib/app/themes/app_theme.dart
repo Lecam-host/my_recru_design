@@ -33,8 +33,13 @@ class AppTheme {
       ),
       bodyMedium: TextStyle(
         fontSize: 14,
+        fontWeight: FontWeight.w500,
+        color: Color.fromARGB(255, 26, 26, 26),
+      ),
+      bodySmall: TextStyle(
+        fontSize: 14,
         fontWeight: FontWeight.w400,
-        color: textColor,
+        color: Colors.black,
       ),
       labelMedium: TextStyle(
         fontSize: 12,

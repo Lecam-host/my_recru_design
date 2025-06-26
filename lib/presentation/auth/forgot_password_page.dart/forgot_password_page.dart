@@ -5,7 +5,6 @@ import 'package:my_recru_design/presentation/auth/forgot_password_page.dart/new_
 import 'package:my_recru_design/presentation/auth/forgot_password_page.dart/number_page.dart'
     show NumberPage;
 import 'package:my_recru_design/presentation/auth/forgot_password_page.dart/otp_page.dart';
-import 'package:my_recru_design/presentation/auth/sign_up/email_page.dart';
 import 'package:my_recru_design/presentation/widgets/button_custom.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
