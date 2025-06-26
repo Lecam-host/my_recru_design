@@ -122,6 +122,7 @@ class ContactHomeState extends State<ContactHome> {
                   context.push(PageName.createContactPage);
                 },
               ),
+              SizedBox(height: 16),
               Expanded(
                 child: ListView.separated(
                   separatorBuilder: (context, index) =>

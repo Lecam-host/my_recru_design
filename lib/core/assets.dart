@@ -20,4 +20,5 @@ class AppImagesConstants {
   static const String path = 'assets/images';
   static const String logo = '$path/app_logo.png';
   static const String girl = '$path/girl.jpg';
+  static const String splashLogo = '$path/logo.png';
 }

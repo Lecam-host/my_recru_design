@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 import 'package:my_recru_design/core/assets.dart';
 import 'package:my_recru_design/presentation/contact/contact_home.dart';
 import 'package:my_recru_design/presentation/widgets/button_custom.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class ContactDetailsPage extends StatelessWidget {
   const ContactDetailsPage({super.key, required this.contact});

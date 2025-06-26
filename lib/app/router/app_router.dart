@@ -10,6 +10,7 @@ import 'package:my_recru_design/presentation/contact/contact_home.dart';
 import 'package:my_recru_design/presentation/contact/create_contact_page.dart';
 import 'package:my_recru_design/presentation/favorite/favorite_home.dart';
 import 'package:my_recru_design/presentation/home/home_page.dart';
+import 'package:my_recru_design/presentation/home/qrcode_scann_page.dart';
 import 'package:my_recru_design/presentation/onboarding/onboarding_page.dart';
 import 'package:my_recru_design/presentation/recent/recent_home.dart';
 import 'package:my_recru_design/presentation/splash_page.dart';
@@ -159,6 +160,17 @@ class AppRouter extends GoRouter {
                 name: PageName.home,
                 pageBuilder: (context, GoRouterState state) {
                   return getPage(child: const HomePage(), state: state);
+                },
+              ),
+
+              GoRoute(
+                path: PageName.mobileScannerPage,
+                name: PageName.mobileScannerPage,
+                pageBuilder: (context, GoRouterState state) {
+                  return getPage(
+                    child: const MobileScannerPage(),
+                    state: state,
+                  );
                 },
               ),
             ],

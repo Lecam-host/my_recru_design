@@ -66,8 +66,7 @@ class _BottomNavigationPageState extends State<BottomNavigationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: widget.child,
-      extendBody:
-          true, // Important pour que le body s'étende sous la barre flottante
+      extendBody: true,
       bottomNavigationBar: Container(
         margin: const EdgeInsets.all(16),
 

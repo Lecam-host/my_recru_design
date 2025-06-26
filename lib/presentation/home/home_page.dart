@@ -90,38 +90,43 @@ class HomePage extends StatelessWidget {
 
               SizedBox(height: 20),
 
-              Container(
-                height: 80,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Theme.of(context).colorScheme.primary,
+              GestureDetector(
+                onTap: () {
+                  context.push(PageName.mobileScannerPage);
+                },
+                child: Container(
+                  height: 80,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                    borderRadius: BorderRadius.circular(12),
                   ),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Text(
-                          'Scanner le code QR pour ajouter un contact',
-                          style: Theme.of(
-                            context,
-                          ).textTheme.bodyMedium!.copyWith(fontSize: 16),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            'Scanner le code QR pour ajouter un contact',
+                            style: Theme.of(
+                              context,
+                            ).textTheme.bodyMedium!.copyWith(fontSize: 16),
+                          ),
                         ),
-                      ),
 
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Icon(
-                          Icons.qr_code_scanner,
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Icon(
+                            Icons.qr_code_scanner,
 
-                          color: Theme.of(context).colorScheme.primary,
-                          size: 50,
+                            color: Theme.of(context).colorScheme.primary,
+                            size: 50,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),

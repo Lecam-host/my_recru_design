@@ -107,7 +107,7 @@ class _LoginPageState extends State<LoginPage> {
                 ButtonCustom(
                   label: 'Connecter',
                   onPressed: () {
-                    context.push(PageName.signUpPage);
+                    context.push(PageName.home);
                   },
                 ),
               ],

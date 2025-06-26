@@ -85,7 +85,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                           : 'Suivant',
                       onPressed: () {
                         if (currentPage == pages.length - 1) {
-                          context.go(PageName.signUpPersonelInfoPage);
+                          context.go(PageName.loginPage);
                         } else {
                           controller.nextPage(
                             duration: const Duration(milliseconds: 300),
@@ -106,7 +106,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         activeDotColor: Theme.of(context).colorScheme.primary,
                         dotHeight: 5,
                         dotWidth: 20,
-                      ), // your preferred effect
+                      ),
                       onDotClicked: (index) {
                         controller.animateToPage(
                           index,
@@ -149,7 +149,6 @@ class OnboardingItem extends StatelessWidget {
             style: Theme.of(
               context,
             ).textTheme.titleLarge!.copyWith(fontSize: 25),
-            // textAlign: TextAlign.center,
           ),
           SizedBox(height: 15),
           Text(
@@ -168,10 +167,7 @@ class OnboardingItem extends StatelessWidget {
               height: double.infinity,
               padding: EdgeInsets.all(10),
               alignment: Alignment.center,
-              // decoration: BoxDecoration(
-              //     image: DecorationImage(
-              //         image: AssetImage(ConstantImages.pattern),
-              //         fit: BoxFit.cover)),
+
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
