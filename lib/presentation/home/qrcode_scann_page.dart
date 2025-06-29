@@ -68,7 +68,7 @@ class _MobileScannerPageState extends State<MobileScannerPage> {
       overlay: QrScannerOverlayShape(
         borderRadius: 10,
         borderLength: 30,
-        borderWidth: 10,
+        borderWidth: 0,
         cutOutHeight: 250,
         cutOutWidth: MediaQuery.of(context).size.width * 0.95,
       ),

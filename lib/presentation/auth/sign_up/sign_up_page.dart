@@ -73,41 +73,35 @@ class _SignUpPageState extends State<SignUpPage> {
 
             Align(
               alignment: Alignment.bottomCenter,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 20,
-                ),
-                child: Column(
-                  children: [
-                    if (currentPage == pages.length - 1)
-                      ButtonCustom(
-                        backgroundColor: Colors.white,
-                        textColor: Theme.of(context).colorScheme.primary,
-                        withBoder: true,
-                        label: 'Ignorer',
-                        onPressed: () {
-                          context.go(PageName.contactHome);
-                        },
-                      ),
-                    SizedBox(height: 10),
+              child: Column(
+                children: [
+                  if (currentPage == pages.length - 1)
                     ButtonCustom(
-                      label: currentPage == pages.length - 1
-                          ? 'Continuer'
-                          : 'Suivant',
+                      backgroundColor: Colors.white,
+                      textColor: Theme.of(context).colorScheme.primary,
+                      withBoder: true,
+                      label: 'Ignorer',
                       onPressed: () {
-                        if (currentPage == pages.length - 1) {
-                          context.go(PageName.contactHome);
-                        } else {
-                          controller.nextPage(
-                            duration: const Duration(milliseconds: 300),
-                            curve: Curves.easeIn,
-                          );
-                        }
+                        context.go(PageName.contactHome);
                       },
                     ),
-                  ],
-                ),
+                  SizedBox(height: 10),
+                  ButtonCustom(
+                    label: currentPage == pages.length - 1
+                        ? 'Continuer'
+                        : 'Suivant',
+                    onPressed: () {
+                      if (currentPage == pages.length - 1) {
+                        context.go(PageName.contactHome);
+                      } else {
+                        controller.nextPage(
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeIn,
+                        );
+                      }
+                    },
+                  ),
+                ],
               ),
             ),
           ],

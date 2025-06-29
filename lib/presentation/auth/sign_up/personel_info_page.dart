@@ -42,30 +42,31 @@ class _SignUpPersonelInfoPageState extends State<SignUpPersonelInfoPage> {
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
                 SizedBox(height: 20),
-                TextFieldWidget(inputFontSize: 16, labelText: "Nom"),
+                TextFieldWidget(labelText: "Nom"),
 
                 SizedBox(height: 20),
-                TextFieldWidget(inputFontSize: 16, labelText: "Prénoms"),
+                TextFieldWidget(labelText: "Prénoms"),
 
                 SizedBox(height: 10),
                 Text.rich(
                   TextSpan(
                     text: 'Déjà un compte? ',
-                    style: Theme.of(context).textTheme.bodySmall,
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      fontWeight: FontWeight.w400,
+                    ),
                     children: [
                       TextSpan(
                         text: 'Connectez-vous ici',
                         style: Theme.of(context).textTheme.titleSmall!.copyWith(
                           decoration: TextDecoration.underline,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w700,
                           decorationColor: Theme.of(
                             context,
                           ).colorScheme.primary,
                           decorationThickness: 1,
                         ),
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () {
-                            context.push(PageName.loginPage);
-                          },
+                        recognizer: TapGestureRecognizer()..onTap = () {},
                       ),
                     ],
                   ),

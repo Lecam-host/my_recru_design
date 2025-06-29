@@ -16,63 +16,63 @@ class ContactHomeState extends State<ContactHome> {
   final List<Contact> contacts = [
     Contact(
       name: "Allhassane Coulibaly",
-      avatar: AppImagesConstants.girl,
+      avatar: AppImagesConstants.user1,
       profession: "Developpeur",
       numero: "0788730000",
       email: "user@gmail.com",
     ),
     Contact(
       name: "Mohamed Franck Seri",
-      avatar: AppImagesConstants.girl,
+      avatar: AppImagesConstants.user2,
       profession: "Developpeur",
       numero: "0788730000",
       email: "user@gmail.com",
     ),
     Contact(
       name: "Michael Owen",
-      avatar: AppImagesConstants.girl,
+      avatar: AppImagesConstants.user3,
       profession: "Developpeur",
       numero: "0788730000",
       email: "user@gmail.com",
     ),
     Contact(
       name: "Marina Alaba",
-      avatar: AppImagesConstants.girl,
+      avatar: AppImagesConstants.user4,
       profession: "Developpeur",
       numero: "0788730000",
       email: "user@gmail.com",
     ),
     Contact(
       name: "Isaac Barron Cypher",
-      avatar: AppImagesConstants.girl,
+      avatar: AppImagesConstants.user5,
       profession: "Developpeur",
       numero: "0788730000",
       email: "user@gmail.com",
     ),
     Contact(
       name: "Vanessa Kouakou",
-      avatar: AppImagesConstants.girl,
+      avatar: AppImagesConstants.user6,
       profession: "Developpeur",
       numero: "0788730000",
       email: "user@gmail.com",
     ),
     Contact(
       name: "Roy de Salem Niamkey",
-      avatar: AppImagesConstants.girl,
+      avatar: AppImagesConstants.user3,
       profession: "Developpeur",
       numero: "0788730000",
       email: "user@gmail.com",
     ),
     Contact(
       name: "Nina Ariane",
-      avatar: AppImagesConstants.girl,
+      avatar: AppImagesConstants.user6,
       profession: "Developpeur",
       numero: "0788730000",
       email: "user@gmail.com",
     ),
     Contact(
       name: "Nina Ariane",
-      avatar: AppImagesConstants.girl,
+      avatar: AppImagesConstants.user2,
       profession: "Developpeur",
       numero: "0788730000",
       email: "user@gmail.com",
@@ -100,8 +100,27 @@ class ContactHomeState extends State<ContactHome> {
           padding: const EdgeInsets.all(10.0),
           child: Column(
             children: [
+              // TextField(
+              //   controller: TextEditingController(),
+              //   hint: 'Rechercher dans les contacts',
+              //   prefixIcon: Icon(
+              //     Icons.search,
+              //     color: Theme.of(context).colorScheme.primary,
+              //   ),
+              //   backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+              //   hintStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
+              //         color: Theme.of(context).colorScheme.primary,
+              //       ),
+              // )
               TextFieldWidget(
-                hintText: 'Rechercher dans les contacts',
+                labelText: 'Rechercher dans les contacts',
+
+                labelStyle: TextStyle(
+                  color: Theme.of(context).colorScheme.primary,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w400,
+                ),
+
                 prefixIcon: Icon(
                   Icons.search,
                   color: Theme.of(context).colorScheme.primary,
@@ -110,6 +129,7 @@ class ContactHomeState extends State<ContactHome> {
                 hintStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
                   color: Theme.of(context).colorScheme.primary,
                 ),
+                withBorder: false,
               ),
 
               SizedBox(height: 16),
@@ -125,8 +145,9 @@ class ContactHomeState extends State<ContactHome> {
               SizedBox(height: 16),
               Expanded(
                 child: ListView.separated(
+                  padding: EdgeInsets.only(bottom: 130),
                   separatorBuilder: (context, index) =>
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 2),
                   itemCount: contacts.length,
                   itemBuilder: (context, index) {
                     return ContactTile(contact: contacts[index]);
@@ -157,7 +178,7 @@ class SearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Color(0xFFF0E6E6),
+        color: Color(0xFFF8F8F8),
         borderRadius: BorderRadius.circular(12),
       ),
       child: TextField(

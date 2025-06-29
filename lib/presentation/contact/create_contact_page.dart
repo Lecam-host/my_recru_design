@@ -38,7 +38,12 @@ class CreateContactPageState extends State<CreateContactPage> {
 
             Expanded(
               child: SingleChildScrollView(
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                padding: EdgeInsets.only(
+                  top: 20,
+                  left: 20,
+                  right: 20,
+                  bottom: 60,
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -189,6 +194,7 @@ class CreateContactPageState extends State<CreateContactPage> {
   void _showFieldSelectionModal(BuildContext context) {
     showModalBottomSheet(
       context: context,
+      isScrollControlled: true,
       backgroundColor: Colors.transparent,
       builder: (context) => FieldSelectionModal(),
     );
@@ -212,78 +218,156 @@ class FieldSelectionModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 240, 240, 240),
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
-        ),
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            padding: EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              border: Border(bottom: BorderSide(color: Colors.grey.shade200)),
+    return Stack(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            color: Colors.transparent,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          ),
+          child: FractionallySizedBox(
+            heightFactor: 0.8,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
-                Expanded(
-                  child: Text(
-                    "Sélectionner les champs à ajouter",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).colorScheme.primary,
+                Container(
+                  height: 20,
+                  decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20),
                     ),
                   ),
                 ),
-                GestureDetector(
-                  onTap: () => Navigator.pop(context),
-                  child: Container(
-                    padding: EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.primary,
-                      shape: BoxShape.circle,
+
+                Container(
+                  width: double.infinity,
+                  padding: EdgeInsets.only(
+                    top: 20,
+                    left: 10,
+                    right: 30,
+                    bottom: 10,
+                  ),
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 240, 240, 240),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20),
                     ),
-                    child: Icon(Icons.close, color: Colors.white, size: 20),
+                  ),
+                  child: Column(
+                    children: [
+                      Center(
+                        child: Container(
+                          height: 5,
+                          width: 100,
+                          decoration: BoxDecoration(
+                            color: Colors.grey.shade400,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                      ),
+                      Text(
+                        "Sélectionner les champs à ajouter",
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                // Container(
+                //   padding: EdgeInsets.all(20),
+                //   decoration: BoxDecoration(
+                //     borderRadius: BorderRadius.only(
+                //       topLeft: Radius.circular(20),
+                //       topRight: Radius.circular(20),
+                //     ),
+                //     border: Border(
+                //       bottom: BorderSide(color: Colors.grey.shade200),
+                //     ),
+                //   ),
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //     children: [
+                //       Expanded(
+                //         child: ,
+                //       ),
+                //     ],
+                //   ),
+                // ),
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(255, 240, 240, 240),
+                      // borderRadius: BorderRadius.only(
+                      //   topLeft: Radius.circular(20),
+                      //   topRight: Radius.circular(20),
+                      // ),
+                    ),
+                    child: ListView.separated(
+                      padding: EdgeInsets.only(bottom: 140),
+
+                      shrinkWrap: true,
+                      itemCount: fields.length,
+                      separatorBuilder: (context, index) =>
+                          SizedBox(height: 10),
+                      itemBuilder: (context, index) {
+                        return InkWell(
+                          onTap: () {
+                            context.pop();
+                          },
+                          child: Container(
+                            padding: EdgeInsets.symmetric(
+                              vertical: 16,
+                              horizontal: 20,
+                            ),
+                            margin: EdgeInsets.symmetric(horizontal: 10),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Text(
+                              fields[index],
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
               ],
             ),
           ),
-
-          Flexible(
-            child: ListView.separated(
-              shrinkWrap: true,
-              itemCount: fields.length,
-              separatorBuilder: (context, index) => SizedBox(height: 10),
-              itemBuilder: (context, index) {
-                return InkWell(
-                  onTap: () {
-                    context.pop();
-                  },
-                  child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 16, horizontal: 20),
-                    margin: EdgeInsets.symmetric(horizontal: 10),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Text(
-                      fields[index],
-                      style: TextStyle(fontSize: 16, color: Colors.black),
-                    ),
-                  ),
-                );
-              },
+        ),
+        Positioned(
+          right: 10,
+          top: 0,
+          child: GestureDetector(
+            onTap: () => Navigator.pop(context),
+            child: Container(
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.primary,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Icon(Icons.close, color: Colors.white, size: 20),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

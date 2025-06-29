@@ -75,19 +75,7 @@ class AppRouter extends GoRouter {
                             state: state,
                           );
                         },
-                        routes: [
-                          GoRoute(
-                            path: PageName.contactDetailsPage,
-                            name: PageName.contactDetailsPage,
-                            pageBuilder: (context, GoRouterState state) {
-                              final contact = state.extra as Contact;
-                              return getPage(
-                                child: ContactDetailsPage(contact: contact),
-                                state: state,
-                              );
-                            },
-                          ),
-                        ],
+                        routes: [],
                       ),
                       GoRoute(
                         path: PageName.createContactPage,
@@ -104,7 +92,17 @@ class AppRouter extends GoRouter {
                   ),
                 ],
               ),
-
+              GoRoute(
+                path: PageName.contactDetailsPage,
+                name: PageName.contactDetailsPage,
+                pageBuilder: (context, GoRouterState state) {
+                  final contact = state.extra as Contact;
+                  return getPage(
+                    child: ContactDetailsPage(contact: contact),
+                    state: state,
+                  );
+                },
+              ),
               GoRoute(
                 path: PageName.splash,
                 name: PageName.splash,

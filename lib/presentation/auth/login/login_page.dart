@@ -50,12 +50,17 @@ class _LoginPageState extends State<LoginPage> {
                 Text.rich(
                   TextSpan(
                     text: 'Mot de passe oublié ? ',
-                    style: Theme.of(context).textTheme.bodySmall,
+                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                      fontSize: 14,
+                      color: Colors.black,
+                    ),
                     children: [
                       TextSpan(
                         text: 'Cliquer ici',
                         style: Theme.of(context).textTheme.titleSmall!.copyWith(
                           decoration: TextDecoration.underline,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w700,
                           decorationColor: Theme.of(
                             context,
                           ).colorScheme.primary,
@@ -74,12 +79,17 @@ class _LoginPageState extends State<LoginPage> {
                 Text.rich(
                   TextSpan(
                     text: 'Pas encore de compte ? ',
-                    style: Theme.of(context).textTheme.bodySmall,
+                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                      fontSize: 14,
+                      color: Colors.black,
+                    ),
                     children: [
                       TextSpan(
                         text: 'Inscrivez-vous ici',
                         style: Theme.of(context).textTheme.titleSmall!.copyWith(
                           decoration: TextDecoration.underline,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w700,
                           decorationColor: Theme.of(
                             context,
                           ).colorScheme.primary,
@@ -96,12 +106,12 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(height: 10),
                 ButtonItem(
                   icon: SvgIconConstants.google,
-                  label: "S’inscrire avec",
+                  label: "Se connecter avec",
                 ),
                 // SizedBox(height: 10),
                 ButtonItem(
                   icon: SvgIconConstants.facebook,
-                  label: "S’inscrire avec",
+                  label: "Se connecter avec",
                 ),
                 SizedBox(height: 20),
                 ButtonCustom(
@@ -146,7 +156,7 @@ class ButtonItem extends StatelessWidget {
           Text(
             label,
             style: Theme.of(context).textTheme.titleLarge!.copyWith(
-              fontSize: 16,
+              fontSize: 20,
               fontWeight: FontWeight.w700,
             ),
           ),

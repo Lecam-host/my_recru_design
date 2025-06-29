@@ -42,7 +42,10 @@ class ContactDetailsPage extends StatelessWidget {
                   SizedBox(height: 10),
                   Text(
                     contact.name,
-                    style: Theme.of(context).textTheme.titleLarge,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                      color: Theme.of(context).colorScheme.primary,
+                      fontSize: 18,
+                    ),
                   ),
                   Text(
                     contact.profession,

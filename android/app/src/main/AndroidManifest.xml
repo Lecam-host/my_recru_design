@@ -2,7 +2,7 @@
 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
     <application
-        android:label="my_recru_design"
+        android:label="My Recru"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

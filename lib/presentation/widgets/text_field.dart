@@ -28,6 +28,8 @@ class TextFieldWidget extends StatefulWidget {
     this.inputFontSize,
     this.hintStyle,
     this.isOptionel = false,
+    this.labelStyle,
+    this.withBorder = true,
   });
   final String? labelText;
   final TextEditingController? controller;
@@ -51,43 +53,64 @@ class TextFieldWidget extends StatefulWidget {
   final bool isOptionel;
   final double? inputFontSize;
   final TextStyle? hintStyle;
+  final TextStyle? labelStyle;
+  final bool withBorder;
 
   @override
   State<TextFieldWidget> createState() => _TextFieldWidgetState();
 }
 
 class _TextFieldWidgetState extends State<TextFieldWidget> {
-  FocusNode focusNode = FocusNode();
+  final FocusNode _focusNode = FocusNode();
+
+  // Color for border
+  Color _borderColor = Colors.grey;
+  double borderWidth = 1;
 
   @override
   void initState() {
     super.initState();
+    // Change color for border if focus was changed
+    _focusNode.addListener(() {
+      setState(() {
+        _borderColor = _focusNode.hasFocus
+            ? Theme.of(context).colorScheme.primary
+            : Color(0xFFCED1D5);
+
+        borderWidth = _focusNode.hasFocus ? 2 : 1;
+      });
+    });
   }
 
   @override
-  void deactivate() {
-    focusNode.dispose();
-    super.deactivate();
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: widget.height ?? 55,
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      height: widget.height ?? 60,
       decoration: BoxDecoration(
+        border: widget.withBorder
+            ? Border.all(color: _borderColor, width: borderWidth)
+            : null,
+
         color: widget.backgroundColor ?? Colors.white,
         borderRadius: BorderRadius.circular(10),
       ),
       child: TextFormField(
         onTap: () {
           setState(() {
-            focusNode.requestFocus();
+            _focusNode.requestFocus();
             widget.isError = false;
           });
         },
         style: TextStyle(fontSize: widget.inputFontSize),
         inputFormatters: widget.inputFormatters,
-        focusNode: focusNode,
+        focusNode: _focusNode,
         expands: widget.expands ?? false,
         keyboardType: widget.keyboardType,
         onChanged: widget.onChanged,
@@ -107,47 +130,19 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
 
           prefixIcon: widget.prefixIcon,
           prefix: widget.prefix,
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(
-              color: !focusNode.hasFocus
-                  ? Theme.of(context).colorScheme.primaryContainer
-                  : Theme.of(context).colorScheme.primary,
-              width: 1.0,
-            ),
-          ),
 
-          // floatingLabelStyle: TextStyle(
-          //   color: Theme.of(context).colorScheme.primary,
-          //   fontWeight: FontWeight.bold,
-          //   fontSize: 18,
-          // ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: Theme.of(context).colorScheme.primary,
-              width: 2,
-            ),
-            borderRadius: BorderRadius.circular(10),
-          ),
-          contentPadding: const EdgeInsets.symmetric(
-            vertical: 20, // plus d’espace pour le label flottant
-            horizontal: 12,
-          ),
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.zero,
           floatingLabelBehavior: FloatingLabelBehavior.auto,
-          border: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: Theme.of(context).colorScheme.primary,
-              width: 0.0,
-            ),
-            borderRadius: BorderRadius.circular(10),
-          ),
-          hintStyle: widget.hintStyle ?? TextStyle(),
-          labelStyle: TextStyle(
-            //height: 0.5,
-            fontSize: 14,
-            color: Colors.grey,
-            fontWeight: FontWeight.w500,
-          ),
+
+          hintStyle: widget.hintStyle,
+          labelStyle:
+              widget.labelStyle ??
+              TextStyle(
+                fontSize: 12,
+                color: Color(0xFF949CAE),
+                fontWeight: FontWeight.w400,
+              ),
 
           labelText: widget.labelText,
         ),

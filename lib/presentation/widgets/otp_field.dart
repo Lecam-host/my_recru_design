@@ -21,8 +21,8 @@ class _OtpFieldState extends State<OtpField> {
   final focusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
   defaultPinTheme() => PinTheme(
-    width: 50,
-    height: 70,
+    width: 59,
+    height: 59,
     textStyle: TextStyle(fontSize: 22, color: Colors.black),
     decoration: BoxDecoration(
       color: Colors.white,
@@ -77,6 +77,7 @@ class _OtpFieldState extends State<OtpField> {
           decoration: defaultPinTheme().decoration!.copyWith(
             color: Colors.white,
             border: Border.all(
+              width: 2,
               style: BorderStyle.solid,
               color: Theme.of(context).colorScheme.primary,
             ),
@@ -86,6 +87,7 @@ class _OtpFieldState extends State<OtpField> {
           decoration: defaultPinTheme().decoration!.copyWith(
             color: Colors.white,
             border: Border.all(
+              width: 2,
               style: BorderStyle.solid,
               color: Theme.of(context).colorScheme.primary,
             ),

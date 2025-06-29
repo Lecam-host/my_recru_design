@@ -37,8 +37,8 @@ class CustomBottomNavIcon extends StatelessWidget {
           titre,
           style: TextStyle(
             color: isActive ? activeColor : inactiveColor,
-            fontSize: 12,
-            fontWeight: isActive ? FontWeight.w600 : FontWeight.w400,
+            fontSize: 16,
+            fontWeight: FontWeight.w700,
           ),
         ),
       ],
@@ -65,68 +65,94 @@ class _BottomNavigationPageState extends State<BottomNavigationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: widget.child,
-      extendBody: true,
-      bottomNavigationBar: Container(
-        margin: const EdgeInsets.all(16),
-
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(25),
-          child: Container(
-            height: 80,
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.primaryContainer,
+      body: Stack(
+        children: [
+          widget.child,
+          Positioned(
+            bottom: 30,
+            left: 16,
+            right: 16,
+            child: ClipRRect(
               borderRadius: BorderRadius.circular(25),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.15),
-                  blurRadius: 20,
-                  offset: const Offset(0, 5),
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.95,
+                height: 102,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.primaryContainer,
+                  borderRadius: BorderRadius.circular(25),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.15),
+                      blurRadius: 20,
+                      offset: const Offset(0, 5),
+                    ),
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.05),
+                      blurRadius: 5,
+                      offset: const Offset(0, 1),
+                    ),
+                  ],
                 ),
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.05),
-                  blurRadius: 5,
-                  offset: const Offset(0, 1),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    // IconButton(
+                    //   isActive: widget.child.currentIndex == 0,
+                    //   icon: SvgIconConstants.appIcon,
+                    //   titre: 'Accueil',
+                    // )
+                    GestureDetector(
+                      onTap: () => _onItemTapped(0),
+                      child: CustomBottomNavIcon(
+                        icon: SvgIconConstants.favorite,
+                        titre: 'Favoris',
+                        isActive: widget.child.currentIndex == 0,
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () => _onItemTapped(1),
+                      child: CustomBottomNavIcon(
+                        icon: SvgIconConstants.recent,
+                        titre: 'Récent',
+                        isActive: widget.child.currentIndex == 1,
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () => _onItemTapped(2),
+                      child: CustomBottomNavIcon(
+                        icon: SvgIconConstants.contact,
+                        titre: 'Contact',
+                        isActive: widget.child.currentIndex == 2,
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                // IconButton(
-                //   isActive: widget.child.currentIndex == 0,
-                //   icon: SvgIconConstants.appIcon,
-                //   titre: 'Accueil',
-                // )
-                GestureDetector(
-                  onTap: () => _onItemTapped(0),
-                  child: CustomBottomNavIcon(
-                    icon: SvgIconConstants.favorite,
-                    titre: 'Favoris',
-                    isActive: widget.child.currentIndex == 0,
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () => _onItemTapped(1),
-                  child: CustomBottomNavIcon(
-                    icon: SvgIconConstants.recent,
-                    titre: 'Récent',
-                    isActive: widget.child.currentIndex == 1,
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () => _onItemTapped(2),
-                  child: CustomBottomNavIcon(
-                    icon: SvgIconConstants.contact,
-                    titre: 'Contact',
-                    isActive: widget.child.currentIndex == 2,
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
-        ),
+        ],
       ),
+      // bottomNavigationBar: ,
+
+      //  Stack(
+      //   children: [
+      //     Column(
+      //       mainAxisSize: MainAxisSize.min,
+      //       children: [
+      //         Expanded(child: widget.child),
+      //         SizedBox(height: 130),
+      //       ],
+      //     ),
+      //     Positioned(
+      //       bottom: 40,
+      //       left: 20,
+      //       right: 20,
+      //       child: ,
+      //     ),
+      //   ],
+      // ),
+      extendBody: true,
+      // bottomNavigationBar: ,
     );
   }
 

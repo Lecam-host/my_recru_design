@@ -63,26 +63,20 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
 
             Align(
               alignment: Alignment.bottomCenter,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 20,
-                ),
-                child: ButtonCustom(
-                  label: currentPage == pages.length - 1
-                      ? 'Continuer'
-                      : 'Suivant',
-                  onPressed: () {
-                    if (currentPage == pages.length - 1) {
-                      context.go(PageName.contactHome);
-                    } else {
-                      controller.nextPage(
-                        duration: const Duration(milliseconds: 300),
-                        curve: Curves.easeIn,
-                      );
-                    }
-                  },
-                ),
+              child: ButtonCustom(
+                label: currentPage == pages.length - 1
+                    ? 'Continuer'
+                    : 'Suivant',
+                onPressed: () {
+                  if (currentPage == pages.length - 1) {
+                    context.go(PageName.contactHome);
+                  } else {
+                    controller.nextPage(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeIn,
+                    );
+                  }
+                },
               ),
             ),
           ],

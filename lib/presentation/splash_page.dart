@@ -30,8 +30,32 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.primary,
-      body: Center(
-        child: SvgPicture.asset(SvgIconConstants.appIcon, height: 100),
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Align(
+              alignment: Alignment.topRight,
+              child: SvgPicture.asset(SvgIconConstants.splash1, height: 150),
+            ),
+            Align(
+              alignment: Alignment.bottomLeft,
+              child: SvgPicture.asset(SvgIconConstants.splash2, height: 150),
+            ),
+            Positioned(
+              bottom: 200,
+              left: 70,
+              child: SvgPicture.asset(SvgIconConstants.splash2, height: 50),
+            ),
+            Positioned(
+              top: 290,
+              right: 70,
+              child: SvgPicture.asset(SvgIconConstants.splash1, height: 100),
+            ),
+            Center(
+              child: SvgPicture.asset(SvgIconConstants.appIcon, height: 100),
+            ),
+          ],
+        ),
       ),
     );
   }

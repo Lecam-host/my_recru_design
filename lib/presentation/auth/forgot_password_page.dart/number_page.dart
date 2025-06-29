@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:my_recru_design/core/assets.dart';
 import 'package:my_recru_design/presentation/widgets/text_field.dart';
 
 class NumberPage extends StatefulWidget {
@@ -28,17 +26,17 @@ class _NumberPageState extends State<NumberPage> {
         SizedBox(height: 20),
         Center(
           child: TextFieldWidget(
-            prefixIcon: Padding(
-              padding: const EdgeInsets.only(left: 5),
-              child: Row(
-                children: [
-                  SvgPicture.asset(SvgIconConstants.ciFlag, height: 20),
-                  const SizedBox(width: 5),
-                  Text("+225"),
-                ],
-              ),
-            ),
-            inputFontSize: 16,
+            // prefixIcon: Padding(
+            //   padding: const EdgeInsets.only(left: 5),
+            //   child: Row(
+            //     children: [
+            //       SvgPicture.asset(SvgIconConstants.ciFlag, height: 20),
+            //       const SizedBox(width: 5),
+            //       Text("+225"),
+            //     ],
+            //   ),
+            // ),
+            //inputFontSize: 16,
             labelText: "Numero de telephone",
             keyboardType: TextInputType.numberWithOptions(
               decimal: false,

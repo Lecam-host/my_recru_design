@@ -22,12 +22,12 @@ class AppTheme {
     ),
     textTheme: const TextTheme(
       titleLarge: TextStyle(
-        fontSize: 24,
+        fontSize: 32,
         fontWeight: FontWeight.w700,
         color: textColor,
       ),
       titleMedium: TextStyle(
-        fontSize: 20,
+        fontSize: 24,
         fontWeight: FontWeight.w700,
         color: textColor,
       ),
@@ -36,10 +36,11 @@ class AppTheme {
         fontWeight: FontWeight.w500,
         color: Color.fromARGB(255, 26, 26, 26),
       ),
+
       bodySmall: TextStyle(
-        fontSize: 14,
+        fontSize: 16,
         fontWeight: FontWeight.w400,
-        color: Colors.black,
+        color: Color(0xFF465863),
       ),
       labelMedium: TextStyle(
         fontSize: 12,

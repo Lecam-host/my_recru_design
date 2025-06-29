@@ -41,7 +41,6 @@ dependencies:
   pinput: ^5.0.1
   url_launcher: ^6.3.1
   qr_code_scanner_plus: ^2.0.10+1
-  flutter_native_splash: ^2.4.6
 
 dev_dependencies:
   flutter_launcher_icons: ^0.14.4
@@ -101,10 +100,10 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
-flutter_native_splash:
-  color: "#6B1A3B"
-  image: assets/images/logo.png
-  android: true
-  ios: true
-  fullscreen: false
+# flutter_native_splash:
+#   color: "#6B1A3B"
+#   image: assets/images/logo.png
+#   android: true
+#   ios: true
+#   fullscreen: false
   

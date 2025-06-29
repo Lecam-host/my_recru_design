@@ -148,14 +148,14 @@ class OnboardingItem extends StatelessWidget {
             title,
             style: Theme.of(
               context,
-            ).textTheme.titleLarge!.copyWith(fontSize: 25),
+            ).textTheme.titleLarge!.copyWith(fontSize: 32),
           ),
           SizedBox(height: 15),
           Text(
             description,
             style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-              color: Colors.grey,
-              fontWeight: FontWeight.w500,
+              color: Colors.black,
+              fontWeight: FontWeight.w400,
             ),
           ),
           Spacer(),

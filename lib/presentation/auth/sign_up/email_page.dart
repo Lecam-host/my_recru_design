@@ -11,6 +11,10 @@ class EmailPage extends StatefulWidget {
 class _EmailPageState extends State<EmailPage> {
   @override
   Widget build(BuildContext context) {
-    return TextFieldWidget(inputFontSize: 16, labelText: "Email");
+    return Column(
+      children: [
+        SizedBox(height: 59, child: TextFieldWidget(labelText: "Email")),
+      ],
+    );
   }
 }
