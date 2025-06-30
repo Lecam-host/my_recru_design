@@ -86,7 +86,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         withBoder: true,
                         label: 'Ignorer',
                         onPressed: () {
-                          context.go(PageName.contactHome);
+                          context.go(PageName.home);
                         },
                       ),
                     SizedBox(height: 10),
