@@ -66,7 +66,10 @@ class _SignUpPersonelInfoPageState extends State<SignUpPersonelInfoPage> {
                           ).colorScheme.primary,
                           decorationThickness: 1,
                         ),
-                        recognizer: TapGestureRecognizer()..onTap = () {},
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            context.push(PageName.loginPage);
+                          },
                       ),
                     ],
                   ),
@@ -76,7 +79,7 @@ class _SignUpPersonelInfoPageState extends State<SignUpPersonelInfoPage> {
                   icon: SvgIconConstants.google,
                   label: "S’inscrire avec",
                 ),
-                // SizedBox(height: 10),
+
                 ButtonItem(
                   icon: SvgIconConstants.facebook,
                   label: "S’inscrire avec",

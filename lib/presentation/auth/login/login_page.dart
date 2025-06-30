@@ -103,12 +103,13 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                 ),
+                //
                 SizedBox(height: 10),
                 ButtonItem(
                   icon: SvgIconConstants.google,
                   label: "Se connecter avec",
                 ),
-                // SizedBox(height: 10),
+
                 ButtonItem(
                   icon: SvgIconConstants.facebook,
                   label: "Se connecter avec",

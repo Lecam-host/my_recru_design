@@ -55,31 +55,33 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
           icon: const Icon(Icons.arrow_back_ios),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Stack(
-          children: [
-            PageView(controller: controller, children: pages),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Stack(
+            children: [
+              PageView(controller: controller, children: pages),
 
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: ButtonCustom(
-                label: currentPage == pages.length - 1
-                    ? 'Continuer'
-                    : 'Suivant',
-                onPressed: () {
-                  if (currentPage == pages.length - 1) {
-                    context.go(PageName.contactHome);
-                  } else {
-                    controller.nextPage(
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.easeIn,
-                    );
-                  }
-                },
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: ButtonCustom(
+                  label: currentPage == pages.length - 1
+                      ? 'Continuer'
+                      : 'Suivant',
+                  onPressed: () {
+                    if (currentPage == pages.length - 1) {
+                      context.go(PageName.contactHome);
+                    } else {
+                      controller.nextPage(
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.easeIn,
+                      );
+                    }
+                  },
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

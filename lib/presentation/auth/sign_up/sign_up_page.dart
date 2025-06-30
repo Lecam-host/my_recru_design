@@ -54,57 +54,62 @@ class _SignUpPageState extends State<SignUpPage> {
           icon: const Icon(Icons.arrow_back_ios),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 20),
-            Text('Inscription', style: Theme.of(context).textTheme.titleMedium),
-            Text(
-              'Veuillez entrez vos informations d’inscription',
-              style: Theme.of(context).textTheme.bodySmall,
-            ),
-            SizedBox(height: 20),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 20),
+              Text(
+                'Inscription',
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              Text(
+                'Veuillez entrez vos informations d’inscription',
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
+              SizedBox(height: 20),
 
-            Expanded(
-              child: PageView(controller: controller, children: pages),
-            ),
+              Expanded(
+                child: PageView(controller: controller, children: pages),
+              ),
 
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Column(
-                children: [
-                  if (currentPage == pages.length - 1)
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Column(
+                  children: [
+                    if (currentPage == pages.length - 1)
+                      ButtonCustom(
+                        backgroundColor: Colors.white,
+                        textColor: Theme.of(context).colorScheme.primary,
+                        withBoder: true,
+                        label: 'Ignorer',
+                        onPressed: () {
+                          context.go(PageName.contactHome);
+                        },
+                      ),
+                    SizedBox(height: 10),
                     ButtonCustom(
-                      backgroundColor: Colors.white,
-                      textColor: Theme.of(context).colorScheme.primary,
-                      withBoder: true,
-                      label: 'Ignorer',
+                      label: currentPage == pages.length - 1
+                          ? 'Continuer'
+                          : 'Suivant',
                       onPressed: () {
-                        context.go(PageName.contactHome);
+                        if (currentPage == pages.length - 1) {
+                          context.go(PageName.home);
+                        } else {
+                          controller.nextPage(
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.easeIn,
+                          );
+                        }
                       },
                     ),
-                  SizedBox(height: 10),
-                  ButtonCustom(
-                    label: currentPage == pages.length - 1
-                        ? 'Continuer'
-                        : 'Suivant',
-                    onPressed: () {
-                      if (currentPage == pages.length - 1) {
-                        context.go(PageName.contactHome);
-                      } else {
-                        controller.nextPage(
-                          duration: const Duration(milliseconds: 300),
-                          curve: Curves.easeIn,
-                        );
-                      }
-                    },
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
