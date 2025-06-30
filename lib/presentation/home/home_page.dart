@@ -11,33 +11,35 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(60),
+        child: AppBar(
+          centerTitle: true,
+          leading: Icon(
+            Icons.menu,
+            color: Theme.of(context).colorScheme.primary,
+            size: 28,
+          ),
+          title: SvgPicture.asset(SvgIconConstants.logo),
+          actions: [
+            CircleAvatar(
+              radius: 20,
+              backgroundImage: AssetImage(AppImagesConstants.girl),
+              backgroundColor: Colors.grey.shade300,
+            ),
+            const SizedBox(width: 10),
+          ],
+          backgroundColor: Colors.white,
+          elevation: 0,
+        ),
+      ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(top: 10.0, left: 10, right: 10),
+          padding: const EdgeInsets.only(left: 10, right: 10),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Icon(
-                      Icons.menu,
-                      color: Theme.of(context).colorScheme.primary,
-                      size: 28,
-                    ),
-                    SvgPicture.asset(SvgIconConstants.logo),
-
-                    CircleAvatar(
-                      radius: 20,
-                      backgroundImage: AssetImage(AppImagesConstants.girl),
-                      backgroundColor: Colors.grey.shade300,
-                    ),
-                  ],
-                ),
-
-                SizedBox(height: 20),
-
                 Text(
                   'Bonjour Lecam,',
                   style: Theme.of(context).textTheme.titleLarge,
@@ -176,7 +178,7 @@ class HomePage extends StatelessWidget {
                 // Bouton Créer un contact
                 GestureDetector(
                   onTap: () {
-                    context.push(PageName.contactHome);
+                    context.push(PageName.createContactPage);
                   },
                   child: Container(
                     height: 92,
@@ -214,6 +216,7 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                 ),
+                SizedBox(height: 20),
               ],
             ),
           ),

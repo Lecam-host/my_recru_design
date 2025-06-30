@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:my_recru_design/core/assets.dart';
 import 'package:my_recru_design/presentation/contact/contact_home.dart';
 import 'package:my_recru_design/presentation/widgets/button_custom.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 
 class ContactDetailsPage extends StatelessWidget {
   const ContactDetailsPage({super.key, required this.contact});
@@ -14,7 +15,10 @@ class ContactDetailsPage extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          SizedBox(width: double.infinity, child: Image.asset(contact.avatar)),
+          SizedBox(
+            width: double.infinity,
+            child: Hero(tag: contact, child: Image.asset(contact.avatar)),
+          ),
           // Photo de profil et informations principales
           Align(
             alignment: Alignment.bottomCenter,
@@ -52,14 +56,101 @@ class ContactDetailsPage extends StatelessWidget {
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                   SizedBox(height: 10),
-                  _buildContactItem(
-                    icon: Icons.phone,
-                    label: 'Téléphone',
-                    value: contact.numero,
-                    countryFlag: '🇨🇮',
-                    onTap: () {},
-                    showCallButton: true,
+                  Slidable(
+                    // Specify a key if the Slidable is dismissible.
+                    key: const ValueKey(0),
+
+                    // The end action pane is the one at the right or the bottom side.
+                    endActionPane: ActionPane(
+                      motion: ScrollMotion(),
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(10),
+                          height: 59,
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).colorScheme.primary,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.messenger_outline_sharp,
+                                color: Colors.white,
+                              ),
+                              SizedBox(width: 5),
+                              Icon(Icons.phone, color: Colors.white),
+                            ],
+                          ),
+                        ),
+                        // SlidableAction(
+                        //   // An action can be bigger than the others.
+                        //   flex: 2,
+                        //   onPressed: doNothing,
+                        //   backgroundColor: Theme.of(
+                        //     context,
+                        //   ).colorScheme.primary,
+                        //   foregroundColor: Colors.white,
+                        //   icon: Icons.archive,
+                        //   label: 'Archive',
+                        // ),
+                        // SlidableAction(
+                        //   onPressed: doNothing,
+                        //   backgroundColor: Theme.of(
+                        //     context,
+                        //   ).colorScheme.primary,
+                        //   foregroundColor: Colors.white,
+                        //   icon: Icons.save,
+                        //   label: 'Save',
+                        // ),
+                      ],
+                    ),
+
+                    // The child of the Slidable is what the user sees when the
+                    // component is not dragged.
+                    child: Container(
+                      height: 70,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: const Color.fromARGB(255, 245, 245, 245),
+                      ),
+                      padding: const EdgeInsets.all(10),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Telephone",
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: Colors.grey[600],
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                                const SizedBox(height: 4),
+                                Text(
+                                  "🇨🇮 +225 ${contact.numero}",
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
+                  // _buildContactItem(
+                  //   icon: Icons.phone,
+                  //   label: 'Téléphone',
+                  //   value: contact.numero,
+                  //   countryFlag: '🇨🇮',
+                  //   onTap: () {},
+                  //   showCallButton: true,
+                  // ),
                   SizedBox(height: 10),
                   _buildContactItem(
                     icon: Icons.email,
@@ -67,6 +158,7 @@ class ContactDetailsPage extends StatelessWidget {
                     value: contact.email,
                     onTap: () {},
                     showEmailButton: true,
+                    ctx: context,
                   ),
                   SizedBox(height: 10),
                   _buildActionButton(
@@ -122,10 +214,9 @@ class ContactDetailsPage extends StatelessWidget {
     required IconData icon,
     required String label,
     required String value,
-    String? countryFlag,
     required VoidCallback onTap,
-    bool showCallButton = false,
     bool showEmailButton = false,
+    required BuildContext ctx,
   }) {
     return InkWell(
       onTap: onTap,
@@ -151,47 +242,21 @@ class ContactDetailsPage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 4),
-                  Row(
-                    children: [
-                      if (countryFlag != null) ...[
-                        Text(countryFlag, style: const TextStyle(fontSize: 16)),
-                        const SizedBox(width: 8),
-                      ],
-                      Expanded(
-                        child: Text(
-                          value,
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
-                    ],
+                  Text(
+                    value,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ],
               ),
             ),
-            if (showCallButton || showEmailButton)
-              Container(
-                height: showCallButton ? 60 : null,
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: const Color(0xFF8B1538),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    if (showCallButton) ...[
-                      const Icon(Icons.message, color: Colors.white, size: 16),
-                      const SizedBox(width: 8),
-                      const Icon(Icons.phone, color: Colors.white, size: 16),
-                    ],
-                    if (showEmailButton)
-                      const Icon(Icons.email, color: Colors.white, size: 16),
-                  ],
-                ),
-              ),
+            Icon(
+              Icons.email_outlined,
+              color: Theme.of(ctx).colorScheme.primary,
+              size: 25,
+            ),
           ],
         ),
       ),
@@ -348,13 +413,17 @@ class ContactDetailsPage extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Text('🇨🇮', style: const TextStyle(fontSize: 16)),
+                  Text(
+                    '🇨🇮 +225',
+                    style: TextStyle(fontSize: 16, color: Color(0xFF616E87)),
+                  ),
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text(
                       contact.numero,
                       style: const TextStyle(
                         fontSize: 16,
+                        color: Color(0xFF616E87),
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -423,3 +492,5 @@ class ContactDetailsPage extends StatelessWidget {
     );
   }
 }
+
+void doNothing(BuildContext context) {}

@@ -89,7 +89,10 @@ class ContactHomeState extends State<ContactHome> {
           leadingWidth: 100,
           leading: Padding(
             padding: const EdgeInsets.all(10.0),
-            child: Image.asset(AppImagesConstants.logo),
+            child: GestureDetector(
+              child: Image.asset(AppImagesConstants.logo),
+              onTap: () => context.go(PageName.home),
+            ),
           ),
           backgroundColor: Colors.white,
           elevation: 0,
@@ -295,9 +298,12 @@ class ContactTile extends StatelessWidget {
         ),
         child: Row(
           children: [
-            CircleAvatar(
-              radius: 24,
-              backgroundImage: AssetImage(contact.avatar),
+            Hero(
+              tag: contact,
+              child: CircleAvatar(
+                radius: 24,
+                backgroundImage: AssetImage(contact.avatar),
+              ),
             ),
             SizedBox(width: 16),
             Expanded(

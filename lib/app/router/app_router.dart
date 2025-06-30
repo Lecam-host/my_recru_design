@@ -19,7 +19,7 @@ import 'package:my_recru_design/presentation/widgets/bottom_navigation_bar.dart'
 class AppRouter extends GoRouter {
   AppRouter()
     : super.routingConfig(
-        initialLocation: PageName.splash,
+        initialLocation: PageName.home,
         observers: <NavigatorObserver>[],
         routingConfig: ValueNotifier<RoutingConfig>(
           RoutingConfig(
